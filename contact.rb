@@ -9,11 +9,13 @@ class Contact
     @name = name
     @email = email
     @@contactlist =[]
+    # @contact_id += 1
 
   end
  
   def to_s
     # TODO: return string representation of Contact
+    "Name: #{@name}, Email: #{@email}, Contact ID: #{@contact_id}"
 
   end
  
@@ -44,6 +46,8 @@ class Contact
     def show(id)
       # TODO: Show a contact, based on ID
     end
+
+    def email_in_database?
     
   end
  

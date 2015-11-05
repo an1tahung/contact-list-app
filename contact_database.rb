@@ -19,9 +19,9 @@ require 'csv'
 
 class ContactDatabase
 
-  CSV::Converters[:blank_id] = lambda do |field|
-  field && field.empty? ? csv : field
-  end
+  # CSV::Converters[:blank_id] = lambda do |field|
+  # field.empty? ? csv : field
+  # end
 
 
   def self.add_contact(contact_array) #headers: true makes the first line the header!
