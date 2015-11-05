@@ -31,9 +31,12 @@ class ContactDatabase
   end
 
   def self.read
+    contacts = []
     CSV.foreach('contacts.csv', headers: true) do |row|
-      puts row
+       contacts << row
     end
+    contacts
+    # CSV.read('contacts.csv', headers: true)
   end
 
   def self.find 
@@ -44,6 +47,9 @@ class ContactDatabase
 
 
 end
+
+# puts ContactDatabase.read.size
+
 
 
 

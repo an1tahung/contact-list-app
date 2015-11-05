@@ -8,7 +8,7 @@ class Contact
     # TODO: assign local variables to instance variables
     @name = name
     @email = email
-    @@contactlist =[]
+    # @@contactlist =[]
     # @contact_id += 1
 
   end
@@ -26,9 +26,10 @@ class Contact
     def create(name, email)
       # TODO: Will initialize a contact as well as add it to the list of contacts
       Contact.new(name, email)
-      @contact_array = [name, email]
+      index = ContactDatabase.read.size + 1
+      @contact_array = [index, name, email]
       ContactDatabase.add_contact(@contact_array)
-      @@contactlist << name && email 
+  
   
     end
  
@@ -48,6 +49,7 @@ class Contact
     end
 
     def email_in_database?
+    end
     
   end
  

@@ -24,7 +24,11 @@ when "new"
 
 when "list"
   puts Contact.all 
-  
+
+when "show"
+id = ARGV[1].to_i
+puts ContactDatabase.read[id - 1]
+
 end
 
 
