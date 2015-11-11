@@ -1,13 +1,4 @@
 ## TODO: Implement CSV reading/writing
-require 'csv'
-
-
-# def find(number)
-#   puts @contacts[number]
-# end
-
-# find(1)
-
 
   # def self.listto_a.map {|row| row.to_hash }
   #   contacts = CSV.read('contacts.csv')
@@ -19,36 +10,22 @@ require 'csv'
 
 class ContactDatabase
 
-  # CSV::Converters[:blank_id] = lambda do |field|
-  # field.empty? ? csv : field
-  # end
-
-
-  def self.add_contact(contact_array) #headers: true makes the first line the header!
-    CSV.open('contacts.csv', "ab", headers: true, header_converters: :symbol, converters: [:all, :blank_id]) do |csv|
+  def self.add_contact(contact_array) 
+    CSV.open('contacts.csv', "ab") do |csv|
       csv << contact_array #appends new contact to the list! 
     end
   end
 
   def self.read
     contacts = []
-    CSV.foreach('contacts.csv', headers: true) do |row|
+    CSV.foreach('contacts.csv') do |row|
        contacts << row
     end
     contacts
-    # CSV.read('contacts.csv', headers: true)
   end
-
-  def self.find 
-    csv = CSV.new('contacts.csv', headers: true, header_converters: :symbol, converters: :all)
-    csv.to_a.map {|row| row.to_hash }
-  end
-
-
-
 end
 
-# puts ContactDatabase.read.size
+
 
 
 
