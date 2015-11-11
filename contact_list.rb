@@ -32,7 +32,7 @@ when "show"
   id = ARGV[1].to_i
   puts Contact.show(id -1) || "Check the ID number. Contact does not exist."
 when "find"
-  term = ARGV[1]#potential variable
+  term = ARGV[1]# can create potential variable of ARGV[1]
   Contact.find(term)
   if [] 
     puts "Check your spelling! Contact does not exist."

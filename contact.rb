@@ -2,15 +2,14 @@ class Contact
  
   attr_reader :name, :email
 
-  def initialize(name, email, id=nil)
+  def initialize(name, email, id=nil) #id is optional here
     # TODO: assign local variables to instance variables
     @id = id
     @name = name
     @email = email
   end
  
-  def to_s #overwrote object method here! This is why when you 
-           #use 'puts' it takes this format
+  def to_s #overwrote object method here! This is why when you use 'puts' it takes this format
     # TODO: return string representation of Contact
     "ID: #{@id}, Name: #{@name}, Email: #{@email}"
   end
