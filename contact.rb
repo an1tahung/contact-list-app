@@ -38,7 +38,6 @@ class Contact
       end
     end
 
-
     def all
       # TODO: Return the list of contacts, as is
       contact_array = ContactDatabase.read
