@@ -2,15 +2,17 @@ class Contact
  
   attr_reader :name, :email
 
-  def initialize(name, email)
+  def initialize(name, email, id=nil)
     # TODO: assign local variables to instance variables
+    @id = id
     @name = name
     @email = email
   end
  
-  def to_s
+  def to_s #overwrote object method here! This is why when you 
+           #use 'puts' it takes this format
     # TODO: return string representation of Contact
-    "Name: #{@name}, Email: #{@email}"
+    "ID: #{@id}, Name: #{@name}, Email: #{@email}"
   end
  
   ## Class Methods
@@ -25,20 +27,33 @@ class Contact
       ContactDatabase.add_contact(contact_array)
     end
  
-    def find(term)
+    def find(term) 
       # TODO: Will find and return contacts that contain the term in the first name, last name or email
-      ContactDatabase.read.find{ |e| /term/ =~ e }
+      contacts = Contact.all 
+      match_contacts = []
+      contacts.each do |contact|
+        if contact.name.include?(term) || 
+          contact.email.include?(term)
+          match_contacts << contact
+        end
+      end
     end
+
 
     def all
       # TODO: Return the list of contacts, as is
-      ContactDatabase.read
-     
+      contact_array = ContactDatabase.read
+      contacts = []
+      contact_array.each do |contact|
+        contacts << Contact.new(contact[1],contact[2])
+      end
+      contacts
     end
     
     def show(id)
       # TODO: Show a contact, based on ID
-      ContactDatabase.read[id]
+      contact = ContactDatabase.read[id]
+      return Contact.new(contact[1],contact[2], id+1)
     end   
   end 
 end

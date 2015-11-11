@@ -1,13 +1,4 @@
 ## TODO: Implement CSV reading/writing
-
-  # def self.listto_a.map {|row| row.to_hash }
-  #   contacts = CSV.read('contacts.csv')
-  #   contacts.each_with_index.map do |contact, i|
-  #     contact = Contact.new 
-  #     end
-  #   end
-
-
 class ContactDatabase
 
   def self.add_contact(contact_array) 
@@ -17,13 +8,16 @@ class ContactDatabase
   end
 
   def self.read
-    contacts = []
+    
+    contact_rows = []
     CSV.foreach('contacts.csv') do |row|
-       contacts << row
+       contact_rows << row
+      # binding.pry
     end
-    contacts
+    contact_rows
   end
 end
+
 
 
 
