@@ -36,6 +36,7 @@ class Contact
           match_contacts << contact
         end
       end
+      match_contacts
     end
 
     def all
@@ -51,8 +52,18 @@ class Contact
     def show(id)
       # TODO: Show a contact, based on ID
       contact = ContactDatabase.read[id]
-      return Contact.new(contact[1],contact[2], id+1)
-    end   
+      return Contact.new(contact[1],contact[2], id+1) if contact
+    end  
+
+    def duplicate(name, email)
+      contacts = Contact.all 
+      contacts.each do |contact|
+        if contact.name == name && 
+          contact.email == email
+          return false
+        end
+      end
+    end
   end 
 end
 

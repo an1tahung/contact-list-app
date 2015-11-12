@@ -8,11 +8,9 @@ class ContactDatabase
   end
 
   def self.read
-    
     contact_rows = []
     CSV.foreach('contacts.csv') do |row|
        contact_rows << row
-      # binding.pry
     end
     contact_rows
   end

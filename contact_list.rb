@@ -24,22 +24,25 @@ when "new"
   email = STDIN.gets.chomp
   puts "What is the name"
   name = STDIN.gets.chomp
-  Contact.create(name,email)
+  if Contact.duplicate(name, email) == false
+    puts "This contact already exists."
+  else
+    Contact.create(name,email)
+    puts "Your contact has been added!"
+  end
 when "list"
   puts Contact.all 
-  binding.pry
 when "show"
   id = ARGV[1].to_i
   puts Contact.show(id -1) || "Check the ID number. Contact does not exist."
 when "find"
-  term = ARGV[1]# can create potential variable of ARGV[1]
-  Contact.find(term)
-  if [] 
-    puts "Check your spelling! Contact does not exist."
-  else
-    puts Contact.find(term)
-  end
+  term = ARGV[1].to_s # can create potential variable of ARGV[1]
+  puts Contact.find(term) ?  Contact.find(term) :  "Check your spelling! Contact does not exist."
+else
+  help
 end
+
+
  
 
 
